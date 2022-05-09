@@ -4,6 +4,10 @@
 import requests
 
 def pokemon_pregunta_dos(pokemon_api_url):
+    """
+    Está función nos permite saber con cuantás especies de pokémon puede procrear
+    raichu, cumpliendo con los criterios establecidos en la pregunta.
+    """
     response = requests.get(url=pokemon_api_url, headers=headers)
     json_dct = response.json()
     number_of_available_pokemons = json_dct["count"]
