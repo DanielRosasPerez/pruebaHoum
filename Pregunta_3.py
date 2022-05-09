@@ -4,7 +4,11 @@
 
 import requests, multiprocessing
 
-def divide_items_in_slices(items, cantidad_de_items_por_slice):
+def dividir_items_en_slices(items, cantidad_de_items_por_slice):
+    """
+    Está función nos permite fraccionar una cantidad de items en pequeñas listas,
+    las cuales llamamos slices.
+    """
     items_length = len(items)
     pivot_index = items_length//cantidad_de_items_por_slice
     slices = list()
@@ -15,6 +19,10 @@ def divide_items_in_slices(items, cantidad_de_items_por_slice):
     return slices
 
 def consultar_pokemones(pokemon_urls, queue_, headers):
+    """
+    Está función nos permite consultar las URLs de los pokemones resultantes y guardar los
+    pesos de aquellos que cumplen con las condiciones descritas en la pregunta.
+    """
     datos_salvados = list()
     for pokemon_url in pokemon_urls:
         # print('~'*80)
@@ -49,7 +57,7 @@ def pokemon_pregunta_tres(pokemon_type_api_url, headers):
         pokemon_urls.append(pokemon_url)
     # ---
     urls_recuperadas = len(pokemon_urls)
-    urls_fraccionadas = divide_items_in_slices(
+    urls_fraccionadas = dividir_items_en_slices(
                                                 items=pokemon_urls, 
                                                 cantidad_de_items_por_slice=int(urls_recuperadas*0.15),
                                                 )
